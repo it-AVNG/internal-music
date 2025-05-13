@@ -1,5 +1,4 @@
 import random
-import pprint
 
 class Session():
     """class to manage session play data"""
@@ -19,16 +18,14 @@ class Session():
         """
         if string_no not in self.data.keys():
             self.data[string_no] = [note]
-        else:
-            finished = self._check(string_no)
-            if not finished:
-                self.data[string_no].append(note)
-            else:
-                if string_no in self.finished:
-                    return
-                self.finished.append(string_no)
+            return
+        if not self._checkFinish(string_no):
+            self.data[string_no].append(note)
+            return
+        if string_no not in self.finished:
+            self.finished.append(string_no)
 
-    def _check(self,string_no:str) -> bool:
+    def _checkFinish(self,string_no:str) -> bool:
         """
         Check if the unique datas in a guitar-string is 7
         Args:
@@ -55,7 +52,6 @@ def main():
         session_mem.insert(string_no=str(single_string), note=note)
         # ask if you still want to play
         print("current session:")
-        pprint.pprint(session_mem.data)
         print(f"finished string: {session_mem.finished}")
         print("continue (Default yes)? (Y/N)")
         ans = input()
