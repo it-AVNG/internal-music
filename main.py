@@ -5,6 +5,7 @@ class Session():
     def __init__(self):
         self.data = {}
         self.finished = []
+        self.done = False
 
     def insert(self, string_no:str, note: str):
         """
@@ -24,6 +25,8 @@ class Session():
             return
         if string_no not in self.finished:
             self.finished.append(string_no)
+        if len(self.finished) == 6:
+            self.done = True
 
     def _checkFinish(self,string_no:str) -> bool:
         """
@@ -38,7 +41,8 @@ class Session():
             return True
         return False
 
-def main():
+
+def play():
     # Common ariable
     diatonic_Note = ["C", "D", "E", "F", "G", "A", "B"]
     session_mem = Session()
@@ -50,6 +54,12 @@ def main():
         print(f"Note to play on string {single_string}: {diatonic_Note[single_note]}")
         # add to session_memory
         session_mem.insert(string_no=str(single_string), note=note)
+        # check if session is done:
+        if session_mem.done:
+            print("current session:")
+            print(f"finished string: {session_mem.finished}")
+            print("Thank you for playing")
+            break
         # ask if you still want to play
         print("current session:")
         print(f"finished string: {session_mem.finished}")
@@ -62,4 +72,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    play()
