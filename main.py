@@ -2,6 +2,16 @@ from src.mod.utils import randomizeStringNotes
 from src.mod.session import Session
 import pprint
 
+'''
+TODO: 
++ [ ] Write Tests for all the current features
++ [ ] Write docstrings for all the current methods and classes
++ [ ] create logging methods using the following format:
+
+<"severity" - "scope" : "message" - "timestamp:2022-05-14T14:16:15+00:00">
+
+'''
+
 
 def generate_play():
     string_list = ["1", "2", "3", "4", "5", "6"]
@@ -41,5 +51,6 @@ def play():
             break
 
 
+from typing import Union
 if __name__ == "__main__":
     play()
