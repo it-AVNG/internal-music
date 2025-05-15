@@ -14,7 +14,8 @@ def play():
     session_mem = Session()
 
     while True:
-        res = generate_play()
+        # res = generate_play()
+        res = session_mem.randomize()
         print(f"current random {res}")
         single_string = res[0]
         note = res[1]

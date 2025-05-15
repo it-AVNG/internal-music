@@ -11,7 +11,6 @@ import random
 def randomizeStringNotes(
     string_list: list[str], note_list: list[str]
 ) -> Union[tuple[str, str], tuple[None, None]]:
-
     gstring = random.choice(string_list)
     notes = random.choice(note_list)
 
