@@ -1,24 +1,15 @@
-from src.mod.utils import randomizeStringNotes
 from src.mod.session import Session
 import pprint
 
 '''
 TODO: 
 + [ ] Write Tests for all the current features
-+ [ ] Write docstrings for all the current methods and classes
++ [x] Write docstrings for all the current methods and classes
 + [ ] create logging methods using the following format:
 
 <"severity" - "scope" : "message" - "timestamp:2022-05-14T14:16:15+00:00">
 
 '''
-
-
-def generate_play():
-    string_list = ["1", "2", "3", "4", "5", "6"]
-    diatone = ["C", "D", "E", "F", "G", "A", "B"]
-    res = randomizeStringNotes(string_list=string_list, note_list=diatone)
-    return res
-
 
 def play():
     session_mem = Session()
