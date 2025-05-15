@@ -4,16 +4,9 @@ from src.mod.session import Session
 
 
 def play():
-    # Common ariable
-    # diatonic_Note = ["C", "D", "E", "F", "G", "A", "B"]
     session_mem = Session()
 
     while True:
-        # single_note = random.randint(0, 6)
-        # single_string = random.randint(1,6)
-        # note = diatonic_Note[single_note]
-        # print(f"Note to play on string {single_string}: {diatonic_Note[single_note]}")
-
         res = randomizeStringNotes()
         print(f"current random {res}")
         single_string = res[0]
