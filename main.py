@@ -1,7 +1,7 @@
 # import random
 from src.mod.utils import randomizeStringNotes
 from src.mod.session import Session
-
+import pprint
 
 def play():
     session_mem = Session()
@@ -16,11 +16,13 @@ def play():
         # check if session is done:
         if session_mem.done:
             print("current session:")
+            pprint.pprint(session_mem.data)
             print(f"finished string: {session_mem.finished}")
             print("Thank you for playing")
             break
         # ask if you still want to play
         print("current session:")
+        pprint.pprint(session_mem.data)
         print(f"finished string: {session_mem.finished}")
         print("continue (Default yes)? (Y/N)")
         ans = input()

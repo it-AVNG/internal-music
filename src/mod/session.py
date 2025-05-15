@@ -1,40 +1,50 @@
-class Session():
+class Session:
     """class to manage session play data"""
+
     def __init__(self):
-        self.data = {}
+        self.data: dict[
+            str, dict
+        ] = {}  # store and keep track of generated random string : [note]
         self.finished = []
         self.done = False
 
-    def insert(self, string_no:str, note: str):
+    def insert(self, string_no: str, note: str):
         """
-        Check if the string is in the session data.
-        if yes, add the note to the list.
-        if no, create {string: [] } and add the note.
-        Args:
-            string_no (int) interger represents the string number only 1-6
-            note (str): diatonic note.
-        Return: None
+        
         """
+        # if the string is not played yet, track it play session
         if string_no not in self.data.keys():
-            self.data[string_no] = [note]
+            self.data[string_no] = {note: 1}
             return
-        if not self._checkFinish(string_no):
-            self.data[string_no].append(note)
+
+        # if the genereated string is not finished playing apply update to the data.
+        if not self._checkStringNoteFinish(string_no, note):
+            # increase the note played on the string
+            self.data[string_no][note] += 1
             return
-        if string_no not in self.finished:
+        # if the generated tring has finished playing, append to finished list
+        length = len(self.data[string_no])
+        if (string_no not in self.finished) and (length == 7):
             self.finished.append(string_no)
+
+        # if all strings finished playing, mark the session as done.
         if len(self.finished) == 6:
             self.done = True
 
-    def _checkFinish(self,string_no:str) -> bool:
-        """
-        Check if the unique datas in a guitar-string is 7
-        Args:
-            String_no
-        Returns:
-            Bool
-        """
-        length = len(set(self.data[string_no]))
-        if length == 7: 
+
+    def _checkStringNoteFinish(self, string_no: str, note: str) -> bool:
+        if note not in self.data[string_no].keys():
+            self.data[string_no].update({note: 1})
+        note_played_2 = self.__checkNotePlayed(string_no=string_no, note=note)
+        if note_played_2:
             return True
         return False
+
+    def __checkNotePlayed(self, string_no: str, note: str) -> bool:
+        """
+        Returns true if the note on the string is played 2 times.
+        """
+        if self.data[string_no][note] == 2:
+            return True
+        return False
+
