@@ -24,12 +24,10 @@ def play():
     session_mem = Session()
 
     while True:
-        # res = generate_play()
         res = session_mem.randomize()
         print(f"current random {res}")
         single_string = res[0]
         note = res[1]
-        # check if the note has been played, if yes, repeat
         # add to session_memory
         session_mem.insert(string_no=str(single_string), note=str(note))
         # check if session is done:
