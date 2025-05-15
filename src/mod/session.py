@@ -3,8 +3,8 @@ from .utils import randomizeStringNotes
 
 class PlaySession:
     def __init__(self):
-        self.gstrings = ["1", "2", "3", "4", "5", "6"]
-        self.diatones = ["C", "D", "E", "F", "G", "A", "B"]
+        self.gstrings: list[str] = ["1", "2", "3", "4", "5", "6"]
+        self.diatones: list[str] = ["C", "D", "E", "F", "G", "A", "B"]
 
     def randomize(self):
         return randomizeStringNotes(string_list=self.gstrings, note_list=self.diatones)
@@ -23,9 +23,9 @@ class Session(PlaySession):
 
     def __init__(self):
         PlaySession.__init__(self)
-        self.data: dict[str, dict] = {}  # keep track of string : [note]
-        self.finished = []
-        self.done = False
+        self.data: dict[str, dict[str,int]] = {}  # keep track of string : [note]
+        self.finished: list[str] = []
+        self.done: bool = False
 
     def insert(self, string_no: str, note: str):
         """ """
@@ -43,7 +43,7 @@ class Session(PlaySession):
         length = len(self.data[string_no])
         if (string_no not in self.finished) and (length == 7):
             self.finished.append(string_no)
-            self._remove_done_string(string=string_no)
+            _ = self._remove_done_string(string=string_no)
 
         # if all strings finished playing, mark the session as done.
         if len(self.finished) == 6:
