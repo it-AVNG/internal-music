@@ -1,6 +1,9 @@
 from src.mod.session import Session
 import pprint
-
+import logging.config
+import logging
+import json
+import os
 '''
 TODO: 
 + [ ] Write Tests for all the current features
@@ -11,10 +14,22 @@ TODO:
 
 '''
 
+def setup_logging(config_path:str):
+    """Sets up logging configuration from a JSON file."""
+    with open(config_path, 'r') as f:
+        config = json.load(f)
+    logging.config.dictConfig(config)
+
 def play():
+
+    logger = logging.getLogger("__main__")
+
+    logger.info("Initiate session:")
     session_mem = Session()
+    logger.info("session initiated")
 
     while True:
+        logger.info("generate random string-note combination:")
         res = session_mem.randomize()
         print(f"current random {res}")
         single_string = res[0]
@@ -39,7 +54,12 @@ def play():
         else:
             break
 
-
-from typing import Union
 if __name__ == "__main__":
+    pwd = os.getcwd()
+    config_file_path = os.path.join(pwd, "log_config.json")
+    setup_logging(config_file_path)
+    logger = logging.getLogger(__name__)
+    logger.info("start playing")
     play()
+    logger.info("session ends!")
+
