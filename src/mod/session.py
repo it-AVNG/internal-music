@@ -36,16 +36,10 @@ class Session(PlaySession):
 
     def __init__(self):
         PlaySession.__init__(self)
-<<<<<<< HEAD
-        self.data: dict[str, dict[str, int]] = {}  # keep track of string : [note]
-        self.finished: list[str] = []  # finished strings
-        self.done: bool = False  # if True, play session ends
-=======
         self.data: dict[str, dict[str,int]] = {}  # keep track of string : [note]
         self.finished: list[str] = [] # finished strings
         self.done: bool = False # if True, play session ends
         self.logger: logging.Logger = logging.getLogger(f"{module_logger.name}.Session")
->>>>>>> 2889f9337d0a52d8a80f8bd37cdb121b37b7e8f4
 
     def insert(self, string_no: str, note: str):
         """
