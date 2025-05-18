@@ -3,6 +3,7 @@ from .utils import randomizeStringNotes
 
 class PlaySession:
     """A class to manage randomize of strings and note"""
+
     def __init__(self):
         self.gstrings: list[str] = ["1", "2", "3", "4", "5", "6"]
         self.diatones: list[str] = ["C", "D", "E", "F", "G", "A", "B"]
@@ -24,14 +25,15 @@ class PlaySession:
         self.gstrings.remove(string)
         return self
 
+
 class Session(PlaySession):
     """class to manage session play data, subclass of session.PlaySession"""
 
     def __init__(self):
         PlaySession.__init__(self)
-        self.data: dict[str, dict[str,int]] = {}  # keep track of string : [note]
-        self.finished: list[str] = [] # finished strings
-        self.done: bool = False # if True, play session ends
+        self.data: dict[str, dict[str, int]] = {}  # keep track of string : [note]
+        self.finished: list[str] = []  # finished strings
+        self.done: bool = False  # if True, play session ends
 
     def insert(self, string_no: str, note: str):
         """

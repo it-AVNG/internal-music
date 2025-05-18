@@ -1,7 +1,7 @@
 from src.mod.session import Session
 import pprint
 
-'''
+"""
 TODO: 
 + [ ] Write Tests for all the current features
 + [x] Write docstrings for all the current methods and classes
@@ -9,7 +9,8 @@ TODO:
 
 <"severity" - "scope" : "message" - "timestamp:2022-05-14T14:16:15+00:00">
 
-'''
+"""
+
 
 def play():
     session_mem = Session()
@@ -40,6 +41,5 @@ def play():
             break
 
 
-from typing import Union
 if __name__ == "__main__":
     play()
