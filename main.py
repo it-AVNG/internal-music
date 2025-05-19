@@ -1,15 +1,11 @@
 from src.mod.session import Session
 import pprint
-<<<<<<< HEAD
-
-"""
-=======
 import logging.config
 import logging
 import json
 import os
-'''
->>>>>>> 2889f9337d0a52d8a80f8bd37cdb121b37b7e8f4
+
+"""
 TODO: 
 + [ ] Write Tests for all the current features
 + [x] Write docstrings for all the current methods and classes
@@ -53,17 +49,13 @@ def play():
         print("current session:")
         pprint.pprint(session_mem.data)
         print(f"finished string: {session_mem.finished}")
-        print("continue (Default yes)? (Y/N)")
+        print("continue (N to exit)? (Yes!)")
         ans = input()
         if ans.upper() != "N":
             continue
         else:
             break
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2889f9337d0a52d8a80f8bd37cdb121b37b7e8f4
 if __name__ == "__main__":
     pwd = os.getcwd()
     config_file_path = os.path.join(pwd, "log_config.json")
